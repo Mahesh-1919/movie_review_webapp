@@ -1,0 +1,98 @@
+body,html{
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.container{
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    position: absolute;
+}
+.searchBar{
+    margin: 2rem;
+    align-self: center;
+    background-color: transparent;
+    
+}
+.searchText{
+    width: 50vw;
+    height: 20px;
+    padding: 3px;
+    padding-left: 20px;
+    border: none;
+    border-radius: 5px;
+}
+.submitBtn{
+    background-color: rgb(22, 114, 252);
+    color: white;
+    border: none;
+    padding: 7px  10px;
+    border-radius: 5px;
+}
+.movieContainer{
+    height: 100%;
+    width: 100%;
+    color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+    overflow-y:auto;
+    flex-wrap: wrap;
+}
+.movieContainer div{
+    height: 500px;
+    width: 250px;
+    padding: 1rem;
+    display: flex;
+    flex-wrap: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.movieContainer div img{
+    height: 400px;
+    width: 250px;
+    border-radius: 10px;
+   
+}
+.review{
+    position: relative;
+    display: flex;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: o;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    backdrop-filter: blur(10px);
+    visibility: hidden;
+   
+}
+.revContent{
+    height: 50%;
+    width: 50%;
+    border-radius: 15px;
+    background-color: rgb(0, 0, 0);
+    padding: 1rem;
+    position: absolute;
+    
+    
+}
+.check{
+    visibility: visible;
+    
+
+}
+.fa-solid{
+    color: rgb(220, 6, 6);
+    position: relative;
+    left: 98%;
+}

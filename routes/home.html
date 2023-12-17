@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    
+    <link rel="stylesheet" href="/routes/home.css">
+    <script src="https://kit.fontawesome.com/2a1a700d1c.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar ">
+        <div class="container">
+          <a class="icon" href="#">Movie Review </a>
+          <ul >
+            <li><input type="text" class=searchText placeholder="search">
+            </li>
+            <li class="searchIcon"><i class="fa-solid fa-magnifying-glass"></i></li>
+            <li class="login-btn"><a  href="/index.html">Login</a></li>
+          </ul>
+        </div>
+    </nav>
+    <div class="upcoming">
+    </div>
+    <div class="gradiant"></div>
+    
+    
+</body>s
+<script>
+  
+  let upcoming=document.querySelector('.upcoming');
+  let titles='';
+  let url=`http://localhost:3000/`;    
+  let trendContainer =document.createElement('div');
+  trendContainer.classList.add('trend')
+  document.body.appendChild(trendContainer)
+
+
+  fetch(url)
+  .then(res=>res.json())
+  .then(data=>{
+      for (let i=0;i<data.length;i++){
+        if (data[i].original_name){
+                      titles=`<h1>${data[i].original_name}</h1>
+                              <h3>${data[i].release_date}</h3>
+                              <p maxlength="100">${data[i].overview}</p>`;
+              }else{
+                      titles=`<h1>${data[i].title}</h1>
+                              <h3>${data[i].release_date}</h3>
+                              <p maxlength="100">${data[i].overview}</p>`;
+              }
+        if (data[i].poster_path){
+          let ele=(data[i].poster_path);
+          bg_path=data[i].backdrop_path;
+          let imgEle=document.createElement('div');
+          imgEle.innerHTML=`<img src='https://image.tmdb.org/t/p/original${ele}'>`;
+          let images=document.createElement('div');
+          images.classList.add('images');
+          images.innerHTML+=`<img src='https://image.tmdb.org/t/p/original${bg_path}'>`;
+          
+          let content=document.createElement('div');
+          content.classList.add('content');
+          content.innerHTML+=(titles)
+          images.appendChild(content);
+          upcoming.appendChild(images);
+          trendContainer.appendChild(imgEle);
+          };
+      };
+  });
+
+  let searchText=document.querySelector('.searchText');
+  let search=document.querySelector('.searchIcon');
+  search.addEventListener('click',()=>{
+    const searchTerm = searchText.value;
+    localStorage.setItem('route',searchTerm);
+    window.location.href=`/index.html`;
+
+  });
+  searchText.value='';
+
+ 
+</script>
+</html>
